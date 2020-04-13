@@ -1,0 +1,38 @@
+<aura:component controller="AccountSearchControllerEvent">
+    <aura:attribute name="lstAccounts" type="List"/>
+    <aura:attribute name="flag" type="boolean" default="false"/>
+    
+    <aura:handler name="firstEvent" event="c:AccountEvent" action="{!c.displayAccounts}"/>   
+    <c:AccountEvent1C1/>
+    <aura:if isTrue="{!v.flag}">
+        <div class="slds-grid slds-wrap">    
+            <aura:iteration items="{!v.lstAccounts}" var="item">
+                
+                <div class="slds-col slds-size_1-of-3 slds-p-around_small">
+                    <div>    
+                        <lightning:card  iconName="custom:custom7">
+                            <aura:set attribute ="title">
+                                <h1>Industry : {!item.Industry}</h1>
+                            </aura:set>
+                            <aura:set attribute="footer">
+                                {!item.Id}
+                            </aura:set>
+                            <aura:set attribute ="actions">
+                                <lightning:button label="View" onclick="{!c.ViewDetails}"/>
+                            </aura:set>
+                            
+                            
+                            <p class="slds-p-horizontal_small">
+                                <!--  {!item.Id} &nbsp;&nbsp;{!item.Name} <br/> -->
+                                <b>Name</b>    :  {!item.Name} <br/>
+                                <b>Phone</b>   :   {!item.Phone} <br/>
+                            </p>
+                        </lightning:card>  
+                    </div> 
+                </div>
+                
+                
+            </aura:iteration>
+        </div> 
+    </aura:if>
+</aura:component>
