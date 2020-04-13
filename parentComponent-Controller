@@ -1,0 +1,25 @@
+({
+    displayAccounts : function(component, event, helper) {
+     /*   var cols=[
+            {label:'Account Name',fieldName:'Name',type:'text'},
+            {label:'Account Phone',fieldName:'Phone',type:'Phone'},
+            {label:'Account Industry',fieldName:'Industry',type:'text'}            
+        ];
+        component.set("v.myColumns",cols);  */
+        var skey=event.getParam("searchkey");
+        var action=component.get("c.getAccounts");
+        action.setParams({"searchparam":skey});
+        action.setCallback(this,function(response){
+            var state=response.getState();
+            console.log(state);
+            if(state=='SUCCESS')
+            {
+                var res=response.getReturnValue();
+                console.log(res);
+                component.set("v.lstAccounts",res);
+                component.set("v.flag",true);
+            }
+        });
+        $A.enqueueAction(action);
+    }
+})
