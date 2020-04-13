@@ -1,0 +1,11 @@
+({
+	searchData : function(component, event, helper) {
+		var skey= component.get("v.searchkey");
+        var evt=  component.getEvent("firstEvent");
+        evt.setParams({
+                       "searchkey":skey
+            
+                      });
+        evt.fire();
+	}
+})
