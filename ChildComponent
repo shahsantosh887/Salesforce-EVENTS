@@ -1,0 +1,13 @@
+<aura:component >
+    <aura:attribute name="searchkey" type="string"/>
+    <aura:registerEvent name="firstEvent" type="c:AccountEvent"/>
+    <div>
+        <table>
+            <tr>
+                <td><b>Industry</b></td>
+                <td><lightning:input value="{!v.searchkey}"/></td>
+                <td><lightning:button label="search" onclick="{!c.searchData}"/></td> 
+            </tr>
+        </table>
+    </div>
+</aura:component>
